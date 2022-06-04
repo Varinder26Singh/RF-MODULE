@@ -22,7 +22,7 @@ void loop()
   t = Serial.read();
   Serial.println(t);
 }
-  if(t == 'F')
+  if(t == 'F')   // forward
   {
     data="f";
     vw_send((uint8_t *)data, strlen(data));
@@ -30,7 +30,7 @@ void loop()
     digitalWrite(9,HIGH);
       digitalWrite(5,HIGH);
   }
-  else if(t =='B')
+  else if(t =='B')  // backward
   {
     data="b";
     vw_send((uint8_t *)data, strlen(data));
@@ -38,19 +38,19 @@ void loop()
     digitalWrite(6,HIGH);
     digitalWrite(11,HIGH);
   }
-  else if(t == 'L'){
+  else if(t == 'L'){   // left
     data="l";
     vw_send((uint8_t *)data, strlen(data));
     vw_wait_tx();      
   digitalWrite(9,HIGH);
 }
-  else if(t == 'R'){
+  else if(t == 'R'){  // right
       data="r";
       vw_send((uint8_t *)data, strlen(data));
       vw_wait_tx();
     digitalWrite(5,HIGH);
   }
-  else if(t == 'S'){
+  else if(t == 'S'){  //stop
       data="s";
       vw_send((uint8_t *)data, strlen(data));
       vw_wait_tx();
