@@ -7,10 +7,10 @@ pinMode(6,OUTPUT);   //left motors reverse
 pinMode(9,OUTPUT);   //right motors forward
 pinMode(11,OUTPUT);   //right motors reverse 
 Serial.begin(9600);
-    vw_set_rx_pin(3);
-    vw_setup(2000);
-    pinMode(3, INPUT);
-    vw_rx_start();
+vw_set_rx_pin(3);
+vw_setup(2000);
+pinMode(3, INPUT);
+vw_rx_start();
 }
 
 void loop()
@@ -20,21 +20,21 @@ void loop()
  
     if (vw_get_message(buf, &buflen))
     {
-      if(buf[0]=='f') {  
+      if(buf[0]=='f') {  // forawrd
         digitalWrite(9,HIGH);
         digitalWrite(5,HIGH);
       }  
-      else if(buf[0]=='b') {
+      else if(buf[0]=='b') {  // backward
         digitalWrite(6,HIGH);
         digitalWrite(11,HIGH);
       }
-      else if(buf[0]=='l') {  
+      else if(buf[0]=='l') {  //left
         digitalWrite(9,HIGH);
       }  
-      else if(buf[0]=='r') {
+      else if(buf[0]=='r') {  // right
           digitalWrite(5,HIGH);
       }
-      else if(buf[0]=='s'){
+      else if(buf[0]=='s'){   // stop
           digitalWrite(9,LOW);
           digitalWrite(6,LOW);
           digitalWrite(5,LOW);
